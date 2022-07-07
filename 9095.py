@@ -2,16 +2,20 @@ import sys
 T = int(sys.stdin.readline())
 
 
-def plus(x):
-    if x == 0:
+def merg(value, sum):
+    global result
+    if sum >= n:
         return
-    lst = [1] * x
-    result = 1
-    result += plus(x-1)
-    return result
+    sum += value
+    if sum == n:
+        result += 1
+    merg(1, sum)
+    merg(2, sum)
+    merg(3, sum)
 
 
 for _ in range(T):
     n = int(sys.stdin.readline())
-    cnt = plus(n)
-    print(cnt)
+    result = 0
+    merg(0, 0)
+    print(result)
