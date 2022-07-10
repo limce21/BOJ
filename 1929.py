@@ -3,15 +3,19 @@ import math
 M, N = map(int, sys.stdin.readline().split())
 
 
-def primality(n):
+def isPrime(num):
     i = 2
-    while i * i <= n:
-        if n % i == 0:
+    for i in range(2, int(math.sqrt(num)+1)):
+        if num % i == 0:
             return False
-        i += 1
     return True
 
 
-for i in range(M, N+1):
-    if primality(i):
-        print(i)
+if M == 1 and N == 2:
+    print(2)
+else:
+    for i in range(M, N+1):
+        if i == 1:
+            continue
+        if isPrime(i):
+            print(i)
